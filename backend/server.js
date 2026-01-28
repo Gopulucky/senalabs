@@ -41,6 +41,14 @@ app.post('/api/join', (req, res) => {
     res.json({ success: true, message: 'Subscribed successfully!' });
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+app.get('/', (req, res) => {
+    res.send('Backend is running!');
 });
+
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`Server running on http://localhost:${PORT}`);
+    });
+}
+
+module.exports = app;

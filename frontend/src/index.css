@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0F172A;
+  /* Slate 900 */
+  --color-secondary: #FFFFFF;
+  /* White */
+  --color-accent: #F3F4F6;
+  /* Slate 100 - used for section backgrounds */
+  --color-blue-brand: #2563EB;
+  /* Royal Blue - used for primary buttons/accents */
+
+  --color-text-main: #111827;
+  /* Gray 900 - Headings */
+  --color-text-body: #4B5563;
+  /* Gray 600 - Body */
+  --color-text-light: #F9FAFB;
+  /* Gray 50 - Text on dark backgrounds */
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background-color: var(--color-secondary);
+  color: var(--color-text-body);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  /* Slate 300 */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+  /* Slate 400 */
+}

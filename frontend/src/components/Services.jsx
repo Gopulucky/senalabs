@@ -16,14 +16,14 @@ const ServiceCard = ({ icon: Icon, title, description }) => (
 const Services = () => {
     const services = [
         {
-            icon: Cpu,
-            title: "Robotics Training",
-            description: "Hands-on courses designed for students to build and program robots."
-        },
-        {
             icon: Award,
             title: "Hackathons",
             description: "Intense coding events where creativity meets real-world challenges."
+        },
+        {
+            icon: Cpu,
+            title: "Workshops",
+            description: "Hands-on training sessions covering robotics, AI, and emerging technologies."
         }
     ];
 
@@ -33,7 +33,7 @@ const Services = () => {
                 <div className="text-center mb-16 space-y-4">
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Our Services</h2>
                     <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-                        Empowering minds with robotics training and hackathons.
+                        Empowering minds through innovative hackathons and hands-on workshops.
                     </p>
                 </div>
 

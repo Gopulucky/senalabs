@@ -68,7 +68,7 @@ const Team = () => {
             role: "AI/ML Developer",
             institution: "MRECW",
             links: { email: "jhansihoudekari944@gamil.com", linkedin: "https://www.linkedin.com/in/jhansi-houdekari-796666356" },
-            imagePlaceholder: "👩‍🎓"
+            image: "/images/jhanspic.jpeg"
         },
         {
             name: "Kusuma Sri",

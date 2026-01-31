@@ -1,33 +1,43 @@
-import React from 'react';
+// SenA Labs - Enterprise React Application
+// Pattern: Lazy loading, Context, Suspense (Google/Meta pattern)
+
+import React, { Suspense } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { AppProvider } from './context/AppContext';
+import { routes } from './routes';
+
+// Static components (always loaded)
 import Header from './components/Header';
-import Hero from './components/Hero';
-import Mission from './components/Mission';
-import Services from './components/Services';
-import Pricing from './components/Pricing';
-import Projects from './components/Projects';
-import Stats from './components/Stats';
-import Team from './components/Team';
-import Gallery from './components/Gallery';
-import Contact from './components/Contact';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
+import ErrorBoundary from './components/ErrorBoundary';
+import { PageLoader } from './components/ui/Navigation';
 
 function App() {
   return (
-    <div className="min-h-screen flex flex-col font-sans text-gray-900 bg-white">
-      <Header />
-      <main className="flex-grow">
-        <Hero />
-        <Stats />
-        <Mission />
-        <Services />
-        <Pricing />
-        <Projects />
-        <Team />
-        <Gallery />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <AppProvider>
+      <ErrorBoundary>
+        <div className="min-h-screen flex flex-col font-sans text-gray-900 bg-white">
+          <ScrollToTop />
+          <Header />
+
+          {/* Suspense for lazy-loaded routes */}
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              {routes.map((route) => (
+                <Route
+                  key={route.path}
+                  path={route.path}
+                  element={<route.element />}
+                />
+              ))}
+            </Routes>
+          </Suspense>
+
+          <Footer />
+        </div>
+      </ErrorBoundary>
+    </AppProvider>
   );
 }
 

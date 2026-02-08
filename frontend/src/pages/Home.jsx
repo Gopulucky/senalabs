@@ -1,7 +1,7 @@
 import React from 'react';
 import Hero from '../components/Hero';
 import Services from '../components/Services';
-import Pricing from '../components/Pricing';
+import Highlights from '../components/Highlights';
 import Stats from '../components/Stats';
 
 const Home = () => {
@@ -10,7 +10,7 @@ const Home = () => {
             <Hero />
             <Stats />
             <Services />
-            <Pricing />
+            <Highlights />
         </main>
     );
 };

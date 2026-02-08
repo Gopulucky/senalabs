@@ -23,6 +23,17 @@ const TeamMember = ({ name, role, institution, links, image, imagePlaceholder })
 );
 
 const Team = () => {
+    // Mentors - Industry Experts guiding our team
+    const mentors = [
+        {
+            name: "Kasarapu Ashok",
+            role: "R&D Coordinator",
+            institution: "Trinity Engineering College and Technology, Peddapalli (13-14 Yrs Exp)",
+            links: { email: "ashok@gmail.com" },
+            imagePlaceholder: "👨‍🏫"
+        }
+    ];
+
     // Data extracted from People Details.docx
     const professionals = [
         {
@@ -38,6 +49,13 @@ const Team = () => {
             institution: "Vasavi Groups",
             links: {}, // No links provided in doc
             image: "/images/vinod_photo.jpeg"
+        },
+        {
+            name: "Prasanna",
+            role: "Team Member",
+            institution: "",
+            links: {},
+            imagePlaceholder: "🧑‍💻"
         }
     ];
 
@@ -45,42 +63,42 @@ const Team = () => {
         {
             name: "MD Sameer",
             role: "Student Developer (IT)",
-            institution: "VNR VJIET",
+            institution: "Vallurupalli Nageswara Rao Vignana Jyothi Institute of Engineering and Technology",
             links: { email: "sameermohammad2344@gmail.com", linkedin: "https://www.linkedin.com/in/mohammad-sameer-47bb86325" },
             imagePlaceholder: "🧑‍🎓"
         },
         {
             name: "Janagani Shrethan Reddy",
             role: "Student Developer",
-            institution: "IITH",
+            institution: "Indian Institute of Technology Hyderabad",
             links: { email: "shrethan186@gmail.com", github: "https://github.com/Shrethan-ee/shrethan", linkedin: "https://www.linkedin.com/in/shrethan-reddy-janagani-83061a311/" },
             imagePlaceholder: "🧑‍🎓"
         },
         {
             name: "Kandula Rishitha Devi",
             role: "AI/ML Developer",
-            institution: "MRECW",
+            institution: "Malla Reddy Engineering College for Women",
             links: { email: "rishithak996@gamil.com", linkedin: "https://share.google/xcE1aBo4QLujAOUj7" },
             imagePlaceholder: "👩‍🎓"
         },
         {
             name: "Jhansi Houdekari",
             role: "AI/ML Developer",
-            institution: "MRECW",
+            institution: "Malla Reddy Engineering College for Women",
             links: { email: "jhansihoudekari944@gamil.com", linkedin: "https://www.linkedin.com/in/jhansi-houdekari-796666356" },
             image: "/images/jhanspic.jpeg"
         },
         {
             name: "Kusuma Sri",
             role: "AI/ML Developer",
-            institution: "MRECW",
+            institution: "Malla Reddy Engineering College for Women",
             links: { email: "kusumakasarapu.111@gmail.com", linkedin: "https://in.linkedin.com/in/kasarapu-kusuma-sri-345886332" },
             imagePlaceholder: "👩‍🎓"
         },
         {
             name: "Vennapureddy Ashritha Reddy",
             role: "Student Developer",
-            institution: "GRIET",
+            institution: "Gokaraju Rangaraju Institute of Engineering and Technology",
             links: { email: "Vennapureddyashritha@gmail.com", linkedin: "https://www.linkedin.com/feed/" },
             imagePlaceholder: "👩‍🎓"
         }
@@ -98,6 +116,20 @@ const Team = () => {
                     </p>
                 </div>
 
+                {/* Mentors Section */}
+                {mentors.length > 0 && (
+                    <>
+                        <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">🎓 Our Mentors</h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                            {mentors.map((mentor, index) => (
+                                <TeamMember key={`mentor-${index}`} {...mentor} />
+                            ))}
+                        </div>
+                    </>
+                )}
+
+                {/* Team Members Section */}
+                <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">👥 Team Members</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {allMembers.map((member, index) => (
                         <TeamMember key={index} {...member} />

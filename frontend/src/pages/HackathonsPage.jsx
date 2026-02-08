@@ -147,46 +147,7 @@ const HackathonDetails = () => {
                 </div>
             </section>
 
-            {/* Hackathons Conducted By Us Section */}
-            <section className="py-16 px-6 bg-gray-50">
-                <div className="max-w-7xl mx-auto">
-                    <div className="text-center mb-12">
-                        <div className="inline-block bg-green-600 text-white text-sm font-bold px-4 py-2 rounded-full mb-4">
-                            🎯 Organized By SenA Labs
-                        </div>
-                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Hackathons Conducted By Us</h2>
-                        <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-                            We don't just participate—we also organize and host hackathons to nurture innovation and inspire the next generation of creators.
-                        </p>
-                    </div>
 
-                    <div className="bg-white p-8 rounded-xl shadow-lg border-2 border-green-500">
-                        <div className="flex items-start gap-4 mb-6">
-                            <div className="w-16 h-16 bg-green-600 text-white rounded-xl flex items-center justify-center flex-shrink-0 text-2xl">
-                                🤖
-                            </div>
-                            <div className="flex-1">
-                                <div className="inline-block bg-green-100 text-green-800 text-xs font-bold px-3 py-1 rounded-full mb-2">
-                                    SenA Labs Event
-                                </div>
-                                <h3 className="text-2xl font-bold text-gray-900 mb-2">Robotics Hackathon</h3>
-                                <p className="text-green-600 font-medium">Organized by SenA Labs</p>
-                            </div>
-                        </div>
-                        <p className="text-gray-600 leading-relaxed mb-6">
-                            Our flagship Robotics Hackathon brings together students, professionals, and enthusiasts to build innovative robotic solutions.
-                            Participants work hands-on with hardware and software to create robots that solve real-world challenges,
-                            fostering creativity, teamwork, and technical excellence in the field of robotics and automation.
-                        </p>
-                        <div className="flex flex-wrap gap-3">
-                            <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">🔧 Hardware Projects</span>
-                            <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">🧠 AI Integration</span>
-                            <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">🤝 Team Collaboration</span>
-                            <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">🏆 Prizes & Recognition</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
             {/* CTA Section */}
             <section className="py-16 px-6">

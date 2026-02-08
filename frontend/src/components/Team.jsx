@@ -49,13 +49,6 @@ const Team = () => {
             institution: "Vasavi Groups",
             links: {}, // No links provided in doc
             image: "/images/vinod_photo.jpeg"
-        },
-        {
-            name: "Prasanna",
-            role: "Team Member",
-            institution: "",
-            links: {},
-            imagePlaceholder: "🧑‍💻"
         }
     ];
 
@@ -100,6 +93,13 @@ const Team = () => {
             role: "Student Developer",
             institution: "Gokaraju Rangaraju Institute of Engineering and Technology",
             links: { email: "Vennapureddyashritha@gmail.com", linkedin: "https://www.linkedin.com/feed/" },
+            imagePlaceholder: "👩‍🎓"
+        },
+        {
+            name: "Katadi Prasanna Kumari",
+            role: "AI/ML Developer",
+            institution: "Malla Reddy Engineering College for Women, Maisammaguda",
+            links: { email: "prasannakumari.katadi29@gmail.com" },
             imagePlaceholder: "👩‍🎓"
         }
     ];

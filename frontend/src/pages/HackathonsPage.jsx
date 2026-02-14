@@ -1,24 +1,23 @@
+// HackathonsPage – Warm Minimalist Light Theme
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Trophy, Users, Lightbulb, Target } from 'lucide-react';
 
 const HackathonCard = ({ title, subtitle, description, icon: Icon, featured = false }) => (
-    <div className={`bg-white p-8 rounded-lg shadow-sm border ${featured ? 'border-blue-500 border-2' : 'border-gray-100'} hover:shadow-md transition-shadow duration-300`}>
+    <div className={`bg-white p-8 rounded-2xl border-2 ${featured ? 'border-orange-300 shadow-lg shadow-orange-100/30' : 'border-gray-100'} card-hover mb-6`}>
         {featured && (
-            <div className="inline-block bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-4">
-                Featured Project
-            </div>
+            <div className="badge badge-orange mb-4">⭐ Featured Project</div>
         )}
         <div className="flex items-start gap-4 mb-4">
-            <div className={`w-12 h-12 ${featured ? 'bg-blue-600' : 'bg-blue-50'} ${featured ? 'text-white' : 'text-blue-600'} rounded-lg flex items-center justify-center flex-shrink-0`}>
+            <div className={`w-12 h-12 ${featured ? 'bg-gradient-to-br from-orange-400 to-coral' : 'bg-orange-50'} ${featured ? 'text-white' : 'text-orange-500'} rounded-xl flex items-center justify-center flex-shrink-0`}>
                 <Icon size={24} />
             </div>
             <div className="flex-1">
-                <h3 className="text-xl font-bold text-gray-900 mb-1">{title}</h3>
-                {subtitle && <p className="text-blue-600 font-medium text-sm mb-3">{subtitle}</p>}
+                <h3 className="text-xl font-bold text-gray-800 mb-1">{title}</h3>
+                {subtitle && <p className="text-orange-500 font-medium text-sm mb-3">{subtitle}</p>}
             </div>
         </div>
-        <p className="text-gray-600 leading-relaxed">{description}</p>
+        <p className="text-gray-500 leading-relaxed">{description}</p>
     </div>
 );
 
@@ -58,16 +57,19 @@ const HackathonDetails = () => {
 
     return (
         <div className="min-h-screen bg-accent">
-            {/* Hero Section */}
-            <section className="bg-primary pt-32 pb-16 px-6">
-                <div className="max-w-7xl mx-auto">
-                    <Link to="/" className="inline-flex items-center text-gray-300 hover:text-white mb-8 transition-colors group">
+            {/* Hero Section – Light Gradient */}
+            <section className="bg-hero-gradient pt-32 pb-16 px-6 relative overflow-hidden">
+                <div className="absolute -top-20 -right-20 w-72 h-72 bg-orange-100/30 rounded-full blur-3xl" />
+                <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-mint/10 rounded-full blur-3xl" />
+                <div className="max-w-7xl mx-auto relative z-10">
+                    <Link to="/" className="inline-flex items-center text-gray-500 hover:text-orange-500 mb-8 transition-colors group">
                         <ArrowLeft size={20} className="mr-2 group-hover:-translate-x-1 transition-transform" />
                         Back to Home
                     </Link>
                     <div className="space-y-4">
-                        <h1 className="text-4xl md:text-5xl font-bold text-white">🚀 Our Hackathon Journey</h1>
-                        <p className="text-gray-300 text-lg max-w-3xl">
+                        <div className="badge badge-orange">🏆 Quest Log</div>
+                        <h1 className="text-4xl md:text-5xl font-bold text-gray-800">🚀 Our Hackathon Journey</h1>
+                        <p className="text-gray-500 text-lg max-w-3xl">
                             Explore our innovative solutions developed through various national and international hackathons,
                             where creativity meets real-world problem-solving.
                         </p>
@@ -75,10 +77,10 @@ const HackathonDetails = () => {
                 </div>
             </section>
 
-            {/* Hackathon Projects Grid */}
+            {/* Hackathon Projects */}
             <section className="py-16 px-6">
                 <div className="max-w-7xl mx-auto">
-                    <div className="space-y-6">
+                    <div className="space-y-2">
                         {hackathons.map((hackathon, index) => (
                             <HackathonCard key={index} {...hackathon} />
                         ))}
@@ -86,57 +88,58 @@ const HackathonDetails = () => {
                 </div>
             </section>
 
-            {/* SIH Featured Section */}
+            {/* SIH Section */}
             <section className="py-16 px-6 bg-white">
                 <div className="max-w-7xl mx-auto">
-                    <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-8 md:p-12 text-white">
-                        <div className="flex items-center gap-3 mb-6">
-                            <Trophy size={32} />
-                            <h2 className="text-3xl md:text-4xl font-bold">Smart India Hackathon (SIH)</h2>
+                    <div className="bg-white p-8 md:p-12 rounded-2xl border-2 border-gray-100 card-hover">
+                        <div className="flex items-start gap-4 mb-6">
+                            <div className="w-12 h-12 bg-orange-50 text-orange-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <Trophy size={24} />
+                            </div>
+                            <div className="flex-1">
+                                <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-1">Smart India Hackathon (SIH)</h2>
+                                <p className="text-orange-500 font-medium text-sm">Team AyurSutra</p>
+                            </div>
                         </div>
 
                         <div className="grid md:grid-cols-2 gap-8 mb-8">
                             <div>
-                                <h3 className="text-2xl font-bold mb-4">Team AyurSutra</h3>
-                                <p className="text-blue-100 leading-relaxed mb-4">
+                                <p className="text-gray-500 leading-relaxed mb-4">
                                     We participated in the Smart India Hackathon (SIH), India's national innovation initiative
                                     that encourages students to solve real-world problems using technology with expert and government guidance.
                                 </p>
-                                <div className="flex items-center gap-2 text-blue-100">
-                                    <Users size={20} />
-                                    <span className="font-medium">6 Team Members</span>
+                                <div className="flex items-center gap-2 text-gray-500">
+                                    <Users size={18} className="text-orange-400" />
+                                    <span className="font-medium text-gray-700">6 Team Members</span>
                                 </div>
                             </div>
-
                             <div>
-                                <h4 className="text-xl font-bold mb-3">💡 Our Focus</h4>
-                                <p className="text-blue-100 leading-relaxed mb-4">
+                                <h4 className="text-lg font-bold text-gray-800 mb-3">💡 Our Focus</h4>
+                                <p className="text-gray-500 leading-relaxed">
                                     Our project focused on improving the Ayurvedic patient experience, addressing challenges such as
                                     appointment booking, therapy scheduling, treatment tracking, and patient management.
                                 </p>
                             </div>
                         </div>
 
-                        <div className="border-t border-blue-500 pt-8">
-                            <h4 className="text-xl font-bold mb-4">📱 Solution: AyurSutra (Danavantari)</h4>
-                            <p className="text-blue-100 leading-relaxed mb-6">
+                        <div className="border-t border-gray-100 pt-8">
+                            <h4 className="text-lg font-bold text-gray-800 mb-4">📱 Solution: AyurSutra (Danavantari)</h4>
+                            <p className="text-gray-500 leading-relaxed mb-6">
                                 AyurSutra – Panchakarma Patient Management and Therapy Scheduling Software is a user-friendly mobile
                                 application that enables patients to connect with Ayurvedic doctors, manage therapy schedules, and
-                                track treatments through reminders and follow-ups. The solution was developed based on the official
-                                SIH problem statement to make Ayurvedic care more accessible and organized.
+                                track treatments through reminders and follow-ups.
                             </p>
-
                             <div className="grid md:grid-cols-2 gap-6">
                                 <div>
-                                    <h5 className="font-bold mb-2">🛠️ Our Approach</h5>
-                                    <p className="text-blue-100 text-sm">
+                                    <h5 className="font-bold text-gray-800 mb-2">🛠️ Our Approach</h5>
+                                    <p className="text-gray-500 text-sm">
                                         We selected the problem from the SIH portal, identified gaps in existing systems, and built
                                         the solution from scratch through research, teamwork, and mentor feedback.
                                     </p>
                                 </div>
                                 <div>
-                                    <h5 className="font-bold mb-2">🏆 Experience</h5>
-                                    <p className="text-blue-100 text-sm">
+                                    <h5 className="font-bold text-gray-800 mb-2">🏆 Experience</h5>
+                                    <p className="text-gray-500 text-sm">
                                         SIH provided hands-on learning, expert mentorship, teamwork exposure, networking opportunities,
                                         and recognition through certificates and prizes.
                                     </p>
@@ -147,20 +150,18 @@ const HackathonDetails = () => {
                 </div>
             </section>
 
-
-
             {/* CTA Section */}
             <section className="py-16 px-6">
                 <div className="max-w-4xl mx-auto text-center">
-                    <h2 className="text-3xl font-bold text-gray-900 mb-4">Join Us in Innovation</h2>
-                    <p className="text-gray-600 mb-8 text-lg">
+                    <h2 className="text-3xl font-bold text-gray-800 mb-4">Join Us in Innovation</h2>
+                    <p className="text-gray-500 mb-8 text-lg">
                         Ready to be part of our next hackathon team? Get in touch and let's build something amazing together.
                     </p>
                     <Link
                         to="/#contact"
-                        className="inline-block px-8 py-3 bg-blue-600 text-white font-bold rounded-lg shadow-md hover:bg-blue-700 transition-colors"
+                        className="inline-block px-8 py-3.5 bg-gradient-to-r from-orange-400 to-orange-500 text-white font-bold rounded-xl shadow-lg shadow-orange-200/50 hover:shadow-orange-300/50 hover:scale-[1.02] transition-all"
                     >
-                        Contact Us
+                        🎮 Contact Us
                     </Link>
                 </div>
             </section>

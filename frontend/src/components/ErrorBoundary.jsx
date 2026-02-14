@@ -28,7 +28,7 @@ class ErrorBoundary extends Component {
     render() {
         if (this.state.hasError) {
             return (
-                <div className="min-h-screen bg-gray-50 flex items-center justify-center px-6">
+                <div className="min-h-screen bg-accent flex items-center justify-center px-6">
                     <div className="max-w-md w-full text-center">
                         <div className="text-6xl mb-6">⚠️</div>
                         <h1 className="text-2xl font-bold text-gray-900 mb-4">
@@ -40,13 +40,13 @@ class ErrorBoundary extends Component {
                         <div className="space-x-4">
                             <button
                                 onClick={() => window.location.reload()}
-                                className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+                                className="px-6 py-3 bg-gradient-to-r from-orange-400 to-orange-500 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-orange-200/50 transition-all"
                             >
                                 Refresh Page
                             </button>
                             <Link
                                 to="/"
-                                className="px-6 py-3 bg-gray-200 text-gray-700 font-medium rounded-lg hover:bg-gray-300 transition-colors inline-block"
+                                className="px-6 py-3 bg-white border-2 border-gray-200 text-gray-700 font-bold rounded-xl hover:border-orange-300 hover:bg-orange-50/50 transition-all inline-block"
                             >
                                 Go Home
                             </Link>

@@ -1,96 +1,89 @@
+// Contact – Material Design Flat Form
 import React, { useState } from 'react';
 
 const Contact = () => {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        message: ''
-    });
-
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
+    const [form, setForm] = useState({ name: '', email: '', message: '' });
+    const [status, setStatus] = useState(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setStatus('sending');
         try {
             const response = await fetch('/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData)
+                body: JSON.stringify(form)
             });
-            const data = await response.json();
-            if (data.success) {
-                alert(`Message sent! We'll get back to you, ${formData.name}.`);
-                setFormData({ name: '', email: '', message: '' });
+            if (response.ok) {
+                setStatus('sent');
+                setForm({ name: '', email: '', message: '' });
             } else {
-                alert('Something went wrong. Please try again.');
+                setStatus('error');
             }
-        } catch (error) {
-            console.error('Error submitting form:', error);
-            alert('Error connecting to server.');
+        } catch {
+            setStatus('error');
         }
     };
 
     return (
-        <section id="contact" className="py-24 px-6 bg-white">
-            <div className="max-w-4xl mx-auto bg-gray-50 rounded-2xl p-8 md:p-12 border border-gray-100 shadow-sm">
-                <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Get in Touch</h2>
-                    <p className="text-gray-600 text-lg">Have a project in mind or want to join us? Send us a message.</p>
+        <section id="contact" className="py-20 px-6 bg-white">
+            <div className="max-w-xl mx-auto">
+                <div className="section-header">
+                    <span className="badge badge-coral mb-4 inline-block">💬 Get in Touch</span>
+                    <h2>Contact Us</h2>
+                    <p>Have a question or want to join our team? Drop us a message!</p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-6">
-                        <div className="space-y-2">
-                            <label htmlFor="name" className="text-sm font-semibold text-gray-700">Name</label>
+                <div className="mat-card">
+                    <form className="space-y-5" onSubmit={handleSubmit}>
+                        <div>
+                            <label className="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-2">Name</label>
                             <input
                                 type="text"
-                                id="name"
-                                name="name"
-                                value={formData.name}
-                                onChange={handleChange}
                                 required
-                                className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors shadow-sm"
-                                placeholder="John Doe"
+                                value={form.name}
+                                onChange={(e) => setForm({ ...form, name: e.target.value })}
+                                className="w-full px-4 py-3 bg-gray-50 border-0 rounded-xl text-gray-800 text-sm font-medium
+                                    focus:bg-white focus:ring-2 focus:ring-primary/30 focus:outline-none transition-all"
+                                placeholder="Your name"
                             />
                         </div>
-                        <div className="space-y-2">
-                            <label htmlFor="email" className="text-sm font-semibold text-gray-700">Email</label>
+                        <div>
+                            <label className="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-2">Email</label>
                             <input
                                 type="email"
-                                id="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleChange}
                                 required
-                                className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors shadow-sm"
-                                placeholder="john@example.com"
+                                value={form.email}
+                                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                                className="w-full px-4 py-3 bg-gray-50 border-0 rounded-xl text-gray-800 text-sm font-medium
+                                    focus:bg-white focus:ring-2 focus:ring-primary/30 focus:outline-none transition-all"
+                                placeholder="your@email.com"
                             />
                         </div>
-                    </div>
-
-                    <div className="space-y-2">
-                        <label htmlFor="message" className="text-sm font-semibold text-gray-700">Message</label>
-                        <textarea
-                            id="message"
-                            name="message"
-                            value={formData.message}
-                            onChange={handleChange}
-                            required
-                            rows="5"
-                            className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors shadow-sm"
-                            placeholder="Tell us about your project..."
-                        />
-                    </div>
-
-                    <button
-                        type="submit"
-                        className="w-full bg-blue-600 text-white font-bold py-4 rounded-lg hover:bg-blue-700 transition-colors shadow-md hover:shadow-lg"
-                    >
-                        Send Message
-                    </button>
-                </form>
+                        <div>
+                            <label className="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-2">Message</label>
+                            <textarea
+                                required
+                                rows={4}
+                                value={form.message}
+                                onChange={(e) => setForm({ ...form, message: e.target.value })}
+                                className="w-full px-4 py-3 bg-gray-50 border-0 rounded-xl text-gray-800 text-sm font-medium
+                                    focus:bg-white focus:ring-2 focus:ring-primary/30 focus:outline-none transition-all resize-none"
+                                placeholder="Tell us what you need..."
+                            />
+                        </div>
+                        <button
+                            type="submit"
+                            disabled={status === 'sending'}
+                            className="mat-btn mat-btn-primary w-full !py-3.5 !rounded-xl !text-base"
+                        >
+                            {status === 'sending' ? 'Sending...' : status === 'sent' ? '✓ Sent!' : 'Send Message'}
+                        </button>
+                        {status === 'error' && (
+                            <p className="text-coral text-sm text-center font-medium">Something went wrong. Please try again.</p>
+                        )}
+                    </form>
+                </div>
             </div>
         </section>
     );

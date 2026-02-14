@@ -71,7 +71,7 @@ export const Skeleton = ({ className = '', variant = 'text' }) => {
 export const PageLoader = () => (
     <div className="min-h-screen flex items-center justify-center">
         <div className="text-center space-y-4">
-            <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto" />
+            <div className="w-12 h-12 border-4 border-orange-400 border-t-transparent rounded-full animate-spin mx-auto" />
             <p className="text-gray-500">Loading...</p>
         </div>
     </div>

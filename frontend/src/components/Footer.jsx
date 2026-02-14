@@ -1,109 +1,114 @@
-import React from 'react';
-import { Github, Twitter, Linkedin, Mail, MapPin, Instagram, Facebook } from 'lucide-react';
-
-// Simple X icon component since it might not be in older lucide versions or explicitly named yet
-const XIcon = ({ size = 20, className }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
-);
+// Footer – Material Flat Enterprise
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Linkedin, Github, Mail, Send, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
-    const [email, setEmail] = React.useState('');
+    const [email, setEmail] = useState('');
+    const [subStatus, setSubStatus] = useState(null);
 
-    const handleSubscribe = async (e) => {
+    const handleNewsletter = async (e) => {
         e.preventDefault();
+        if (!email.trim()) return;
+        setSubStatus('sending');
         try {
             const response = await fetch('/api/join', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email })
             });
-            const data = await response.json();
-            if (data.success) {
-                alert('Subscribed successfully!');
-                setEmail('');
-            } else {
-                alert(data.message || 'Subscription failed.');
-            }
-        } catch (error) {
-            console.error('Subscription error:', error);
-            alert('An error occurred during subscription.');
-        }
+            if (response.ok) { setSubStatus('done'); setEmail(''); }
+            else setSubStatus('error');
+        } catch { setSubStatus('error'); }
     };
 
+    const quickLinks = [
+        { name: 'Home', to: '/' },
+        { name: 'Hackathons', to: '/hackathons' },
+        { name: 'Programs', to: '/programs' },
+        { name: 'Projects', to: '/projects' },
+    ];
+
     return (
-        <footer className="bg-primary pt-16 pb-8 border-t border-gray-800 text-white">
-            <div className="max-w-7xl mx-auto px-6">
-
-                {/* Newsletter / CTA */}
-                <div className="mb-16 pb-12 border-b border-gray-800 flex flex-col md:flex-row justify-between items-center gap-6">
-                    <div className="text-center md:text-left">
-                        <h3 className="text-2xl font-bold mb-2">Join SenA Labs</h3>
-                        <p className="text-gray-400">Stay updated on workshops and events.</p>
-                    </div>
-                    <form onSubmit={handleSubscribe} className="flex w-full md:w-auto gap-2">
-                        <input
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            placeholder="Enter email here"
-                            required
-                            className="px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:border-blue-500 w-full md:w-80"
-                        />
-                        <button type="submit" className="px-6 py-3 bg-blue-600 rounded-lg font-bold hover:bg-blue-700 transition-colors">
-                            Send
-                        </button>
-                    </form>
-                </div>
-
-                <div className="grid md:grid-cols-4 gap-12 mb-12">
+        <footer className="bg-gray-50 border-t border-gray-100">
+            <div className="max-w-6xl mx-auto px-6 py-16">
+                <div className="grid md:grid-cols-4 gap-10">
                     {/* Brand */}
-                    <div className="space-y-4">
-                        <h3 className="text-2xl font-bold text-white">SenA Labs</h3>
-                        <p className="text-gray-400 text-sm">
-                            Empowering students and creators with robotics and tech challenges.
+                    <div className="md:col-span-2">
+                        <div className="flex items-center gap-3 mb-4">
+                            <img src="/images/logo.jpeg" alt="SenA Labs" className="h-9 w-9 rounded-xl object-cover" />
+                            <span className="text-lg font-bold text-gray-800">SenA Labs</span>
+                        </div>
+                        <p className="text-gray-500 text-sm leading-relaxed mb-6 max-w-sm">
+                            Empowering innovators through robotics, hackathons, and cutting-edge tech education.
                         </p>
+
+                        {/* Newsletter */}
+                        <form onSubmit={handleNewsletter} className="flex gap-2">
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                placeholder="Your email"
+                                className="flex-1 px-4 py-2.5 bg-white rounded-xl text-sm border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary/20 focus:outline-none transition-all"
+                            />
+                            <button type="submit" className="mat-btn mat-btn-primary !px-4 !rounded-xl">
+                                <Send size={16} />
+                            </button>
+                        </form>
+                        {subStatus === 'done' && <p className="text-mint text-xs mt-2 font-semibold">✓ Subscribed!</p>}
                     </div>
 
                     {/* Quick Links */}
                     <div>
-                        <h4 className="text-white font-bold mb-4">Quick Links</h4>
-                        <ul className="space-y-2 text-sm text-gray-400">
-                            <li><a href="#" className="hover:text-white transition-colors">Home</a></li>
-                            <li><a href="#about" className="hover:text-white transition-colors">About</a></li>
-                            <li><a href="#programs" className="hover:text-white transition-colors">Programs</a></li>
-                            <li><a href="#projects" className="hover:text-white transition-colors">Projects</a></li>
+                        <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4">Quick Links</h4>
+                        <ul className="space-y-2.5">
+                            {quickLinks.map((link) => (
+                                <li key={link.name}>
+                                    <Link to={link.to} className="text-gray-500 hover:text-primary text-sm font-medium transition-colors">
+                                        {link.name}
+                                    </Link>
+                                </li>
+                            ))}
                         </ul>
                     </div>
 
-                    {/* Socials */}
+                    {/* Contact */}
                     <div>
-                        <h4 className="text-white font-bold mb-4">Follow Us</h4>
-                        <div className="flex space-x-4">
-                            <a href="#" className="text-gray-400 hover:text-white transition-colors"><Facebook size={20} /></a>
-                            <a href="#" className="text-gray-400 hover:text-white transition-colors"><Instagram size={20} /></a>
-                            <a href="#" className="text-gray-400 hover:text-white transition-colors"><span className="text-xs font-bold">TikTok</span></a>
-                            <a href="#" className="text-gray-400 hover:text-white transition-colors"><Twitter size={20} /></a>
+                        <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4">Contact</h4>
+                        <ul className="space-y-3 text-gray-500 text-sm">
+                            <li className="flex items-center gap-2">
+                                <Mail size={14} className="text-orange-400" />
+                                <span>senalabs@gmail.com</span>
+                            </li>
+                            <li className="flex items-center gap-2">
+                                <Phone size={14} className="text-orange-400" />
+                                <span>+91 98765 43210</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                                <MapPin size={14} className="text-orange-400 mt-0.5" />
+                                <span>Trinity Engineering College, Peddapalli</span>
+                            </li>
+                        </ul>
+
+                        {/* Socials */}
+                        <div className="flex gap-2 mt-6">
+                            <a href="#" className="w-8 h-8 rounded-lg bg-white elevation-1 flex items-center justify-center text-gray-400 hover:text-blue-600 transition-colors">
+                                <Linkedin size={15} />
+                            </a>
+                            <a href="#" className="w-8 h-8 rounded-lg bg-white elevation-1 flex items-center justify-center text-gray-400 hover:text-gray-700 transition-colors">
+                                <Github size={15} />
+                            </a>
                         </div>
                     </div>
-
-                    {/* Contact Info */}
-                    <div>
-                        <h4 className="text-white font-bold mb-4">Contact</h4>
-                        <ul className="space-y-2 text-sm text-gray-400">
-                            <li className="flex items-center space-x-2">
-                                <Mail size={16} />
-                                <span>hello@senalabs.io</span>
-                            </li>
-                            <li className="flex items-center space-x-2">
-                                <MapPin size={16} />
-                                <span>+1-555-789-1234</span>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
+            </div>
 
-                <div className="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
-                    <p>&copy; 2025 SenA Labs. All rights reserved.</p>
+            {/* Bottom bar */}
+            <div className="border-t border-gray-200 py-4 px-6">
+                <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+                    <p className="text-gray-400 text-xs">© 2024 SenA Labs. All rights reserved.</p>
+                    <p className="text-gray-400 text-xs">Built with ❤️ by SenA Labs</p>
                 </div>
             </div>
         </footer>

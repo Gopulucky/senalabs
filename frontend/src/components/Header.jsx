@@ -1,6 +1,4 @@
-// Enterprise Header Component
-// Features: Prefetch on hover, active link highlighting, mobile menu with context
-
+// Header – Material Design Flat Enterprise
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
@@ -12,30 +10,19 @@ const Header = () => {
     const [scrolled, setScrolled] = useState(false);
     const location = useLocation();
 
-    // Handle scroll effect
     useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 50);
-        };
+        const handleScroll = () => setScrolled(window.scrollY > 50);
         window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Close mobile menu on route change
-    useEffect(() => {
-        setIsOpen(false);
-    }, [location.pathname]);
+    useEffect(() => { setIsOpen(false); }, [location.pathname]);
 
-    // Prefetch route on hover (enterprise pattern)
     const handleLinkHover = useCallback((path) => {
         const route = getRouteByPath(path);
-        // Trigger lazy load preload if available
-        if (route?.element?.preload) {
-            route.element.preload();
-        }
+        if (route?.element?.preload) route.element.preload();
     }, []);
 
-    // Check if link is active
     const isActiveLink = (path) => {
         if (path === '/') return location.pathname === '/';
         return location.pathname.startsWith(path);
@@ -43,36 +30,36 @@ const Header = () => {
 
     return (
         <header
-            className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-primary shadow-lg py-3' : 'bg-primary py-4'
+            className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled
+                    ? 'glass-strong elevation-2 py-2'
+                    : 'bg-white/70 backdrop-blur-sm py-3'
                 }`}
         >
-            <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
                 {/* Logo */}
                 <Link
                     to="/"
-                    className="flex items-center gap-3 cursor-pointer group"
+                    className="flex items-center gap-3 group"
                     onMouseEnter={() => handleLinkHover('/')}
                 >
                     <img
                         src="/images/logo.jpeg"
                         alt={APP_NAME}
-                        className="h-10 w-10 rounded-full object-cover group-hover:ring-2 ring-white/30 transition-all"
+                        className="h-9 w-9 rounded-xl object-cover transition-transform duration-200 group-hover:scale-105"
                     />
-                    <div className="text-2xl font-bold text-white tracking-tight">
-                        {APP_NAME}
-                    </div>
+                    <span className="text-lg font-bold text-gray-800 tracking-tight">{APP_NAME}</span>
                 </Link>
 
-                {/* Desktop Navigation */}
-                <nav className="hidden md:flex space-x-1">
+                {/* Desktop Nav */}
+                <nav className="hidden md:flex items-center gap-1">
                     {NAV_ITEMS.map((item) => (
                         <Link
                             key={item.path}
                             to={item.path}
                             onMouseEnter={() => handleLinkHover(item.path)}
                             className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${isActiveLink(item.path)
-                                    ? 'bg-white/10 text-white'
-                                    : 'text-gray-300 hover:text-white hover:bg-white/5'
+                                    ? 'bg-orange-50 text-orange-600 font-semibold'
+                                    : 'text-gray-500 hover:text-gray-800 hover:bg-gray-50'
                                 }`}
                             aria-current={isActiveLink(item.path) ? 'page' : undefined}
                         >
@@ -81,32 +68,32 @@ const Header = () => {
                     ))}
                 </nav>
 
-                {/* Mobile Menu Button */}
+                {/* Mobile Toggle */}
                 <button
-                    className="md:hidden text-white focus:outline-none p-2 hover:bg-white/10 rounded-lg transition-colors"
+                    className="md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-50 transition-colors"
                     onClick={() => setIsOpen(!isOpen)}
                     aria-label={isOpen ? 'Close menu' : 'Open menu'}
                     aria-expanded={isOpen}
                 >
-                    {isOpen ? <X size={24} /> : <Menu size={24} />}
+                    {isOpen ? <X size={22} /> : <Menu size={22} />}
                 </button>
             </div>
 
-            {/* Mobile Navigation Overlay */}
+            {/* Mobile Menu */}
             <div
-                className={`md:hidden absolute top-full left-0 w-full bg-primary border-t border-white/10 shadow-xl transition-all duration-300 ${isOpen
+                className={`md:hidden absolute top-full left-0 w-full bg-white elevation-3 transition-all duration-200 ${isOpen
                         ? 'opacity-100 translate-y-0'
-                        : 'opacity-0 -translate-y-2 pointer-events-none'
+                        : 'opacity-0 -translate-y-1 pointer-events-none'
                     }`}
             >
-                <nav className="flex flex-col p-4 space-y-1">
+                <nav className="flex flex-col p-3 gap-1">
                     {NAV_ITEMS.map((item) => (
                         <Link
                             key={item.path}
                             to={item.path}
-                            className={`px-4 py-3 rounded-lg text-base font-medium transition-colors ${isActiveLink(item.path)
-                                    ? 'bg-white/10 text-white'
-                                    : 'text-gray-300 hover:text-white hover:bg-white/5'
+                            className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors ${isActiveLink(item.path)
+                                    ? 'bg-orange-50 text-orange-600'
+                                    : 'text-gray-600 hover:bg-gray-50'
                                 }`}
                         >
                             {item.name}

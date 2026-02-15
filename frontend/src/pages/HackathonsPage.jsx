@@ -158,7 +158,7 @@ const HackathonDetails = () => {
                         Ready to be part of our next hackathon team? Get in touch and let's build something amazing together.
                     </p>
                     <Link
-                        to="/#contact"
+                        to="/contact"
                         className="inline-block px-8 py-3.5 bg-gradient-to-r from-orange-400 to-orange-500 text-white font-bold rounded-xl shadow-lg shadow-orange-200/50 hover:shadow-orange-300/50 hover:scale-[1.02] transition-all"
                     >
                         🎮 Contact Us

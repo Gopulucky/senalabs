@@ -79,21 +79,21 @@ const Footer = () => {
                         <ul className="space-y-3 text-gray-500 text-sm">
                             <li className="flex items-center gap-2">
                                 <Mail size={14} className="text-orange-400" />
-                                <span>senalabs@gmail.com</span>
+                                <span>ashok.kasarapu@gmail.com</span>
                             </li>
                             <li className="flex items-center gap-2">
                                 <Phone size={14} className="text-orange-400" />
-                                <span>+91 98765 43210</span>
+                                <span>+91 85559 25670</span>
                             </li>
                             <li className="flex items-start gap-2">
                                 <MapPin size={14} className="text-orange-400 mt-0.5" />
-                                <span>Trinity Engineering College, Peddapalli</span>
+                                <span>Sri Chaitanya Colony, Peddapalli</span>
                             </li>
                         </ul>
 
                         {/* Socials */}
                         <div className="flex gap-2 mt-6">
-                            <a href="#" className="w-8 h-8 rounded-lg bg-white elevation-1 flex items-center justify-center text-gray-400 hover:text-blue-600 transition-colors">
+                            <a href="https://www.linkedin.com/in/kasarapu-ashok-287748186/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-lg bg-white elevation-1 flex items-center justify-center text-gray-400 hover:text-blue-600 transition-colors">
                                 <Linkedin size={15} />
                             </a>
                             <a href="#" className="w-8 h-8 rounded-lg bg-white elevation-1 flex items-center justify-center text-gray-400 hover:text-gray-700 transition-colors">

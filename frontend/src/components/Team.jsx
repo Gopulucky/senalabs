@@ -65,7 +65,7 @@ const Team = () => {
                 { label: "⚡ AWS Expert", color: "badge-orange" },
                 { label: "🏫 Trinity College, Peddapalli", color: "badge-mint" },
             ],
-            links: { email: "ashok@gmail.com" },
+            links: { email: "ashok.kasarapu@gmail.com", linkedin: "https://www.linkedin.com/in/kasarapu-ashok-287748186/" },
             image: "/images/AshokSir.jpeg"
         }
     ];
@@ -103,23 +103,23 @@ const Team = () => {
             image: "/images/shrethan.jpg"
         },
         {
-            name: "Jhansi Sri",
+            name: "Jhansi Houdekari",
             role: "Student Developer",
-            institution: "Trinity Engineering College",
-            links: {},
+            institution: "Mallareddy Engineering College for Women Autonomous, Maisammaguda",
+            links: { email: "jhansihoudekari944@gmail.com", linkedin: "https://www.linkedin.com/in/jhansi-houdekari-796666356" },
             image: "/images/jhanspic.jpeg"
         },
         {
-            name: "Rishitha",
+            name: "Kandula Rishitha Devi",
             role: "Student Developer",
-            institution: "Trinity Engineering College",
-            links: {},
+            institution: "Mallareddy Engineering College for Women Autonomous, Maisammaguda",
+            links: { email: "rishithak996@gmail.com", linkedin: "https://share.google/xcE1aBo4QLujAOUj7" },
             image: "/images/Rishitha.jpeg"
         },
         {
             name: "Kasarapu Kusuma Sri",
             role: "Student Developer",
-            institution: "Trinity Engineering College",
+            institution: "Mallareddy Engineering College for Women Autonomous, Maisammaguda",
             links: { email: "kusumakasarapu.111@gmail.com", linkedin: "https://in.linkedin.com/in/kasarapu-kusuma-sri-345886332" },
             image: "/images/Kusuma.jpeg"
         },
@@ -133,8 +133,8 @@ const Team = () => {
         {
             name: "Katadi Prasanna Kumari",
             role: "AI/ML Developer",
-            institution: "Malla Reddy Engineering College for Women, Maisammaguda",
-            links: { email: "prasannakumari.katadi29@gmail.com" },
+            institution: "Mallareddy Engineering College for Women Autonomous, Maisammaguda",
+            links: { email: "prasannakumari.katadi29@gmail.com", linkedin: "https://www.linkedin.com/in/prasanna-kumari-katadi-178b04376" },
             image: "/images/PrasannaKumari.jpeg"
         }
     ];

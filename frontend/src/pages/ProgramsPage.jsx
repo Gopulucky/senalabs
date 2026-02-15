@@ -217,7 +217,7 @@ const ProgramsDetails = () => {
                         Join our team for future workshops and training programs. Get hands-on experience with cutting-edge technologies.
                     </p>
                     <Link
-                        to="/#contact"
+                        to="/contact"
                         className="inline-block px-8 py-3.5 bg-gradient-to-r from-orange-400 to-orange-500 text-white font-bold rounded-xl shadow-lg shadow-orange-200/50 hover:shadow-orange-300/50 hover:scale-[1.02] transition-all"
                     >
                         🎮 Get In Touch

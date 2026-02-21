@@ -107,7 +107,7 @@ const Footer = () => {
             {/* Bottom bar */}
             <div className="border-t border-gray-200 py-4 px-6">
                 <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-                    <p className="text-gray-400 text-xs">© 2024 SenA Labs. All rights reserved.</p>
+                    <p className="text-gray-400 text-xs">© 2026 SenA Labs. All rights reserved.</p>
                     <p className="text-gray-400 text-xs">Built with ❤️ by SenA Labs</p>
                 </div>
             </div>

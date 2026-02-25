@@ -33,19 +33,19 @@ const Hero = () => {
                 </p>
 
                 {/* Stats row – flat material chips */}
-                <div className="inline-flex items-center gap-4 bg-white elevation-1 px-6 py-3 rounded-xl">
+                <div className="flex flex-wrap justify-center items-center gap-4 bg-white elevation-1 px-6 py-4 rounded-xl max-w-[90%] mx-auto md:inline-flex md:px-6 md:py-3">
                     <div className="flex items-center gap-2">
                         <span className="text-orange-400 text-sm">🏆</span>
                         <span className="font-bold text-gray-800 text-sm">20+</span>
                         <span className="text-gray-400 text-xs">Projects</span>
                     </div>
-                    <div className="w-px h-5 bg-gray-200" />
+                    <div className="hidden md:block w-px h-5 bg-gray-200" />
                     <div className="flex items-center gap-2">
                         <span className="text-mint text-sm">⚡</span>
                         <span className="font-bold text-gray-800 text-sm">30+</span>
                         <span className="text-gray-400 text-xs">Hackathons</span>
                     </div>
-                    <div className="w-px h-5 bg-gray-200" />
+                    <div className="hidden md:block w-px h-5 bg-gray-200" />
                     <div className="flex items-center gap-2">
                         <span className="text-coral text-sm">🎓</span>
                         <span className="font-bold text-gray-800 text-sm">100+</span>

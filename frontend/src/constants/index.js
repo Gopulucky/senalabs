@@ -7,12 +7,12 @@ export const APP_TAGLINE = 'Innovating the Future';
 // Navigation items configuration
 export const NAV_ITEMS = [
     { name: 'Home', path: '/', exact: true },
-    { name: 'Programs', path: '/programs' },
-    { name: 'Hackathons', path: '/hackathons' },
+    { name: 'About', path: '/about' },
     { name: 'Expos', path: '/expos' },
+    { name: 'Hackathon', path: '/hackathons' },
+    { name: 'Programs', path: '/programs' },
     { name: 'R&D', path: '/projects' },
     { name: 'Team', path: '/team' },
-    { name: 'About', path: '/about' },
     { name: 'Contact', path: '/contact' },
 ];
 

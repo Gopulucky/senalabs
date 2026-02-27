@@ -31,36 +31,32 @@
       "destination": "/frontend/vite.svg"
     },
     {
-      "source": "/home",
-      "destination": "/frontend/index.html"
-    },
-    {
       "source": "/about",
-      "destination": "/frontend/index.html"
+      "destination": "/frontend/src/pages/AboutPage.jsx"
     },
     {
       "source": "/expos",
-      "destination": "/frontend/index.html"
+      "destination": "/frontend/src/pages/ExposPage.jsx"
     },
     {
       "source": "/team",
-      "destination": "/frontend/index.html"
+      "destination": "/frontend/src/pages/TeamPage.jsx"
     },
     {
       "source": "/hackathon",
-      "destination": "/frontend/index.html"
+      "destination": "/frontend/src/pages/HackathonsPage.jsx"
     },
     {
       "source": "/programs",
-      "destination": "/frontend/index.html"
+      "destination": "/frontend/src/pages/ProgramsPage.jsx"
     },
     {
-      "source": "/rnd",
-      "destination": "/frontend/index.html"
+      "source": "/projects",
+      "destination": "/frontend/src/pages/ProjectsPage.jsx"
     },
     {
       "source": "/contact",
-      "destination": "/frontend/index.html"
+      "destination": "/frontend/src/pages/ContactPage.jsx"
     },
     {
       "source": "/(.*)",

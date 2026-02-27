@@ -32,31 +32,31 @@
     },
     {
       "source": "/about",
-      "destination": "/frontend/src/pages/AboutPage.jsx"
+      "destination": "/frontend/index.html"
     },
     {
       "source": "/expos",
-      "destination": "/frontend/src/pages/ExposPage.jsx"
+      "destination": "/frontend/index.html"
     },
     {
       "source": "/team",
-      "destination": "/frontend/src/pages/TeamPage.jsx"
+      "destination": "/frontend/index.html"
     },
     {
       "source": "/hackathon",
-      "destination": "/frontend/src/pages/HackathonsPage.jsx"
+      "destination": "/frontend/index.html"
     },
     {
       "source": "/programs",
-      "destination": "/frontend/src/pages/ProgramsPage.jsx"
+      "destination": "/frontend/index.html"
     },
     {
       "source": "/projects",
-      "destination": "/frontend/src/pages/ProjectsPage.jsx"
+      "destination": "/frontend/index.html"
     },
     {
       "source": "/contact",
-      "destination": "/frontend/src/pages/ContactPage.jsx"
+      "destination": "/frontend/index.html"
     },
     {
       "source": "/(.*)",

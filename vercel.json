@@ -1,85 +1,8 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "backend/server.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "frontend/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    }
-  ],
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/backend/server.js"
-    },
-    {
-      "source": "/assets/(.*)",
-      "destination": "/frontend/assets/$1"
-    },
-    {
-      "source": "/images/(.*)",
-      "destination": "/frontend/images/$1"
-    },
-    {
-      "source": "/vite.svg",
-      "destination": "/frontend/vite.svg"
-    },
-    {
-      "source": "/about",
-      "destination": "/frontend/index.html"
-    },
-    {
-      "source": "/expos",
-      "destination": "/frontend/index.html"
-    },
-    {
-      "source": "/team",
-      "destination": "/frontend/index.html"
-    },
-    {
-      "source": "/hackathon",
-      "destination": "/frontend/index.html"
-    },
-    {
-      "source": "/programs",
-      "destination": "/frontend/index.html"
-    },
-    {
-      "source": "/projects",
-      "destination": "/frontend/index.html"
-    },
-    {
-      "source": "/contact",
-      "destination": "/frontend/index.html"
-    },
-    {
       "source": "/(.*)",
-      "destination": "/frontend/index.html"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/api/(.*)",
-      "headers": [
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Access-Control-Allow-Methods",
-          "value": "GET,POST,PUT,DELETE,OPTIONS"
-        },
-        {
-          "key": "Access-Control-Allow-Headers",
-          "value": "Content-Type"
-        }
-      ]
+      "destination": "/index.html"
     }
   ]
 }

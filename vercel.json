@@ -31,6 +31,38 @@
       "destination": "/frontend/vite.svg"
     },
     {
+      "source": "/home",
+      "destination": "/frontend/index.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/frontend/index.html"
+    },
+    {
+      "source": "/expos",
+      "destination": "/frontend/index.html"
+    },
+    {
+      "source": "/team",
+      "destination": "/frontend/index.html"
+    },
+    {
+      "source": "/hackathon",
+      "destination": "/frontend/index.html"
+    },
+    {
+      "source": "/programs",
+      "destination": "/frontend/index.html"
+    },
+    {
+      "source": "/rnd",
+      "destination": "/frontend/index.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/frontend/index.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/frontend/index.html"
     }

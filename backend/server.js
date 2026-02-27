@@ -5,6 +5,7 @@ require('dotenv').config();
 
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 
 // Config
 const config = require('./src/config');
@@ -58,6 +59,17 @@ app.get(config.apiPrefix, (req, res) => {
             subscribe: `${config.apiPrefix}/join`
         }
     });
+});
+
+// Serve built React frontend
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
+
+// Catch-all frontend routes (SPA fallback) - skip API endpoints
+app.get('*', (req, res, next) => {
+    if (req.originalUrl.startsWith(config.apiPrefix || '/api')) {
+        return next();
+    }
+    res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
 });
 
 // 404 Handler

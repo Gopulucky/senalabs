@@ -1,64 +1,36 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-/**
- * Error Boundary Component
- * Catches JavaScript errors anywhere in the child component tree
- * Enterprise-grade error handling pattern
- */
 class ErrorBoundary extends Component {
     constructor(props) {
         super(props);
         this.state = { hasError: false, error: null, errorInfo: null };
     }
-
-    static getDerivedStateFromError(error) {
-        return { hasError: true };
-    }
-
+    static getDerivedStateFromError(error) { return { hasError: true }; }
     componentDidCatch(error, errorInfo) {
         this.setState({ error, errorInfo });
-
-        // Log error to console (could be replaced with error tracking service)
         console.error('ErrorBoundary caught an error:', error, errorInfo);
-
-        // TODO: Send to error tracking service (Sentry, etc.)
     }
-
     render() {
         if (this.state.hasError) {
             return (
-                <div className="min-h-screen bg-accent flex items-center justify-center px-6">
+                <div className="min-h-screen bg-bg-deep flex items-center justify-center px-6">
                     <div className="max-w-md w-full text-center">
-                        <div className="text-6xl mb-6">⚠️</div>
-                        <h1 className="text-2xl font-bold text-gray-900 mb-4">
-                            Something went wrong
-                        </h1>
-                        <p className="text-gray-600 mb-8">
-                            We apologize for the inconvenience. Please try refreshing the page.
-                        </p>
+                        <pre className="font-mono text-aurora-cyan text-sm mb-6 opacity-60">{`
+  ╔══════════════════╗
+  ║   ERROR  ⚠️      ║
+  ║   CODE: 500      ║
+  ╚══════════════════╝`}</pre>
+                        <h1 className="font-display text-2xl font-bold text-text-primary mb-4">Something went wrong</h1>
+                        <p className="text-text-secondary mb-8">We apologize for the inconvenience. Please try refreshing the page.</p>
                         <div className="space-x-4">
-                            <button
-                                onClick={() => window.location.reload()}
-                                className="px-6 py-3 bg-gradient-to-r from-orange-400 to-orange-500 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-orange-200/50 transition-all"
-                            >
-                                Refresh Page
-                            </button>
-                            <Link
-                                to="/"
-                                className="px-6 py-3 bg-white border-2 border-gray-200 text-gray-700 font-bold rounded-xl hover:border-orange-300 hover:bg-orange-50/50 transition-all inline-block"
-                            >
-                                Go Home
-                            </Link>
+                            <button onClick={() => window.location.reload()} className="btn-aurora btn-aurora-primary">Refresh Page</button>
+                            <Link to="/" className="btn-aurora btn-aurora-outline inline-block">Go Home</Link>
                         </div>
-
-                        {/* Show error details in development */}
                         {import.meta.env.DEV && this.state.error && (
-                            <details className="mt-8 text-left bg-gray-100 p-4 rounded-lg">
-                                <summary className="cursor-pointer text-sm font-medium text-gray-700">
-                                    Error Details (Development Only)
-                                </summary>
-                                <pre className="mt-2 text-xs text-red-600 overflow-auto">
+                            <details className="mt-8 text-left glass-card p-4">
+                                <summary className="cursor-pointer text-sm font-mono text-text-muted">$ cat error.log</summary>
+                                <pre className="mt-2 text-xs text-coral overflow-auto font-mono">
                                     {this.state.error.toString()}
                                     {this.state.errorInfo?.componentStack}
                                 </pre>
@@ -68,7 +40,6 @@ class ErrorBoundary extends Component {
                 </div>
             );
         }
-
         return this.props.children;
     }
 }

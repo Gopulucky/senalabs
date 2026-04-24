@@ -8,8 +8,11 @@ const Home = () => {
     return (
         <main className="flex-grow">
             <Hero />
+            <div className="section-divider" />
             <Stats />
+            <div className="section-divider" />
             <Services />
+            <div className="section-divider" />
             <Highlights />
         </main>
     );

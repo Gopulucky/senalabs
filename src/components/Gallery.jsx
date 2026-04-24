@@ -1,4 +1,4 @@
-// Gallery – Material Flat Grid
+// Gallery – Dark Glass Grid with Lightbox
 import React, { useState } from 'react';
 import { X } from 'lucide-react';
 
@@ -14,10 +14,15 @@ const Gallery = () => {
     ];
 
     return (
-        <section id="gallery" className="py-20 px-6 bg-surface">
+        <section className="py-20 px-6">
             <div className="max-w-6xl mx-auto">
-                <div className="section-header">
-                    <span className="badge badge-lavender mb-4 inline-block">📸 Memory Lane</span>
+                <div className="section-header-terminal">
+                    <span className="terminal-label">GALLERY</span>
+                    <span className="section-counter">[ 06 / 06 ]</span>
+                </div>
+
+                <div className="section-title-block">
+                    <span className="badge-glass badge-violet mb-4 inline-block">📸 Memory Lane</span>
                     <h2>Journey & Events</h2>
                     <p>Capturing moments from our workshops, hackathons, and team activities.</p>
                 </div>
@@ -27,16 +32,16 @@ const Gallery = () => {
                         <div
                             key={img.id}
                             onClick={() => setSelectedImage(img)}
-                            className="mat-card !p-1.5 cursor-pointer group"
+                            className="glass-card !p-1.5 cursor-pointer group card-hover-glow"
                         >
                             <div className="aspect-square rounded-xl overflow-hidden">
                                 <img
                                     src={img.src}
                                     alt={img.title}
-                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-400"
+                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100"
                                 />
                             </div>
-                            <p className="text-xs font-medium text-gray-500 mt-2 px-1 truncate">{img.title}</p>
+                            <p className="font-mono text-[10px] text-text-muted mt-2 px-1 truncate">{img.title}</p>
                         </div>
                     ))}
                 </div>
@@ -45,14 +50,14 @@ const Gallery = () => {
             {/* Lightbox */}
             {selectedImage && (
                 <div
-                    className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4"
+                    className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4"
                     onClick={() => setSelectedImage(null)}
                 >
-                    <button className="absolute top-6 right-6 text-white hover:text-orange-300 transition-colors z-10">
+                    <button className="absolute top-6 right-6 text-text-secondary hover:text-aurora-cyan transition-colors z-10">
                         <X size={28} />
                     </button>
                     <div
-                        className="relative max-w-4xl max-h-[85vh] w-full animate-fadeInUp"
+                        className="relative max-w-4xl max-h-[85vh] w-full animate-scaleIn"
                         onClick={(e) => e.stopPropagation()}
                     >
                         <img
@@ -60,8 +65,8 @@ const Gallery = () => {
                             alt={selectedImage.title}
                             className="w-full h-full object-contain rounded-2xl"
                         />
-                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent px-6 py-4 rounded-b-2xl">
-                            <h3 className="text-lg font-bold text-white">{selectedImage.title}</h3>
+                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent px-6 py-4 rounded-b-2xl">
+                            <h3 className="font-display text-lg font-bold text-white">{selectedImage.title}</h3>
                         </div>
                     </div>
                 </div>

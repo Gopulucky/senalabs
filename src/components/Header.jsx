@@ -1,4 +1,4 @@
-// Header – Material Design Flat Enterprise
+// Header – Aurora Terminal Glassmorphic Nav
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
@@ -28,15 +28,9 @@ const Header = () => {
         return location.pathname.startsWith(path);
     };
 
-    const isTeamPage = location.pathname === '/team';
-
     return (
         <header
-            className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled
-                ? 'glass-strong elevation-2 py-2'
-                : isTeamPage
-                    ? 'bg-orange-50 py-3'
-                    : 'bg-white/70 backdrop-blur-sm py-3'
+            className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'glass-nav-scrolled py-2' : 'glass-nav py-3'
                 }`}
         >
             <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
@@ -46,12 +40,16 @@ const Header = () => {
                     className="flex items-center gap-3 group"
                     onMouseEnter={() => handleLinkHover('/')}
                 >
-                    <img
-                        src="/images/logo.jpeg"
-                        alt={APP_NAME}
-                        className="h-9 w-9 rounded-xl object-cover transition-transform duration-200 group-hover:scale-105"
-                    />
-                    <span className="text-lg font-bold text-gray-800 tracking-tight">{APP_NAME}</span>
+                    <div className="relative">
+                        <img
+                            src="/images/logo.jpeg"
+                            alt={APP_NAME}
+                            className="h-9 w-9 rounded-xl object-cover transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(6,182,212,0.3)]"
+                        />
+                    </div>
+                    <span className="text-lg font-bold text-text-primary tracking-tight font-display">
+                        {APP_NAME}
+                    </span>
                 </Link>
 
                 {/* Desktop Nav */}
@@ -61,20 +59,20 @@ const Header = () => {
                             key={item.path}
                             to={item.path}
                             onMouseEnter={() => handleLinkHover(item.path)}
-                            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${isActiveLink(item.path)
-                                ? 'bg-orange-50 text-orange-600 font-semibold'
-                                : 'text-gray-500 hover:text-gray-800 hover:bg-gray-50'
+                            className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 font-mono ${isActiveLink(item.path)
+                                ? 'text-aurora-cyan bg-aurora-cyan/10'
+                                : 'text-text-muted hover:text-text-primary hover:bg-white/5'
                                 }`}
                             aria-current={isActiveLink(item.path) ? 'page' : undefined}
                         >
-                            {item.name}
+                            {isActiveLink(item.path) ? `[ ${item.name} ]` : item.name}
                         </Link>
                     ))}
                 </nav>
 
                 {/* Mobile Toggle */}
                 <button
-                    className="md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-50 transition-colors"
+                    className="md:hidden p-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-white/5 transition-colors"
                     onClick={() => setIsOpen(!isOpen)}
                     aria-label={isOpen ? 'Close menu' : 'Open menu'}
                     aria-expanded={isOpen}
@@ -85,22 +83,24 @@ const Header = () => {
 
             {/* Mobile Menu */}
             <div
-                className={`md:hidden absolute top-full left-0 w-full bg-white elevation-3 transition-all duration-200 ${isOpen
+                className={`md:hidden absolute top-full left-0 w-full glass-card-strong transition-all duration-200 ${isOpen
                     ? 'opacity-100 translate-y-0'
                     : 'opacity-0 -translate-y-1 pointer-events-none'
                     }`}
+                style={{ borderRadius: 0, borderTop: 'none' }}
             >
                 <nav className="flex flex-col p-3 gap-1">
-                    {NAV_ITEMS.map((item) => (
+                    {NAV_ITEMS.map((item, i) => (
                         <Link
                             key={item.path}
                             to={item.path}
-                            className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors ${isActiveLink(item.path)
-                                ? 'bg-orange-50 text-orange-600'
-                                : 'text-gray-600 hover:bg-gray-50'
+                            className={`px-4 py-3 rounded-lg text-sm font-medium font-mono transition-all ${isActiveLink(item.path)
+                                ? 'text-aurora-cyan bg-aurora-cyan/10'
+                                : 'text-text-secondary hover:text-text-primary hover:bg-white/5'
                                 }`}
+                            style={{ animationDelay: `${i * 50}ms` }}
                         >
-                            {item.name}
+                            {isActiveLink(item.path) ? `[ ${item.name} ]` : item.name}
                         </Link>
                     ))}
                 </nav>

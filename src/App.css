@@ -1,4 +1,13 @@
-/* App-level layout reset */
-#root {
+/* App-level layout & aurora background */
+.app-shell {
+  position: relative;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-content {
+  position: relative;
+  z-index: 2;
+  flex: 1;
 }

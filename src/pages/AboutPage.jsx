@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import Mission from '../components/Mission';
+import AsciiArt from '../components/ui/AsciiArt';
 
 const AboutPage = () => {
     return (
@@ -17,9 +18,13 @@ const AboutPage = () => {
                     <div className="space-y-4">
                         <span className="badge-glass badge-orange">🎯 About</span>
                         <h1 className="font-display text-4xl md:text-5xl font-bold text-text-primary">About Us</h1>
-                        <p className="text-text-secondary text-lg max-w-3xl">
+                        <p className="text-text-secondary text-lg max-w-3xl mb-8">
                             Learn about our mission, vision, and what drives SenA Labs forward.
                         </p>
+                        
+                        <div className="glass-card p-6 inline-block mt-8">
+                            <AsciiArt theme="ai_brain" accent="aurora-violet" />
+                        </div>
                     </div>
                 </div>
             </section>

@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Cpu, Brain, Wrench, Zap } from 'lucide-react';
+import AsciiArt from '../components/ui/AsciiArt';
 
 const ProgramCard = ({ title, overview, keyLearning, hardware, outcome, icon: Icon, featured = false }) => (
     <div className={`glass-card card-hover-glow p-8 mb-8 ${featured ? 'ring-1 ring-aurora-cyan/30' : ''}`}>
@@ -132,10 +133,14 @@ const ProgramsDetails = () => {
                     <div className="space-y-4">
                         <span className="badge-glass badge-green">🎓 Skill Tree</span>
                         <h1 className="font-display text-4xl md:text-5xl font-bold text-text-primary">Our Workshops & Training Programs</h1>
-                        <p className="text-text-secondary text-lg max-w-3xl">
+                        <p className="text-text-secondary text-lg max-w-3xl mb-8">
                             Explore our hands-on training programs and workshops held at prestigious institutions like IIT Bombay's Techfest,
                             where we gained practical skills in robotics, AI, and emerging technologies.
                         </p>
+
+                        <div className="glass-card p-6 inline-block mt-4 border-terminal-green/20">
+                            <AsciiArt theme="mech_core" accent="terminal-green" />
+                        </div>
                     </div>
                 </div>
             </section>

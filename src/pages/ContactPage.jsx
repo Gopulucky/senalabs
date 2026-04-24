@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import Contact from '../components/Contact';
+import AsciiArt from '../components/ui/AsciiArt';
 
 const ContactPage = () => {
     return (
@@ -16,9 +17,13 @@ const ContactPage = () => {
                     <div className="space-y-4">
                         <span className="badge-glass badge-pink">📬 Connect</span>
                         <h1 className="font-display text-4xl md:text-5xl font-bold text-text-primary">Contact Us</h1>
-                        <p className="text-text-secondary text-lg max-w-3xl">
+                        <p className="text-text-secondary text-lg max-w-3xl mb-8">
                             Have questions or want to collaborate? We'd love to hear from you.
                         </p>
+
+                        <div className="glass-card p-6 inline-block mt-4 border-aurora-pink/20">
+                            <AsciiArt theme="satellite" accent="aurora-pink" />
+                        </div>
                     </div>
                 </div>
             </section>

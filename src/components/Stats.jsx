@@ -1,5 +1,6 @@
 // System Metrics – Brutalist Grid Layout
 import React from 'react';
+import AsciiArt from './ui/AsciiArt';
 
 const SystemMetrics = () => {
     const metrics = [
@@ -12,11 +13,16 @@ const SystemMetrics = () => {
         <section className="py-20 px-6">
             <div className="max-w-7xl mx-auto">
                 {/* Terminal Section Header */}
-                <div className="section-header-terminal font-mono mb-0 border-b-0">
+                <div className="section-header-terminal font-mono mb-0 border-b-0 flex justify-between items-end">
                     <div className="flex flex-col">
                         <span className="terminal-label text-text-muted text-[10px]"># SYS.PERFORMANCE</span>
                         <span className="text-aurora-cyan text-sm font-bold">METRICS</span>
                     </div>
+                    
+                    <div className="hidden md:block opacity-30">
+                        <AsciiArt theme="server_rack" accent="text-text-muted" />
+                    </div>
+
                     <span className="section-counter">[ 02 / 06 ]</span>
                 </div>
 

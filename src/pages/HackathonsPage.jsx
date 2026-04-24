@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Trophy, Users, Lightbulb, Target } from 'lucide-react';
+import AsciiArt from '../components/ui/AsciiArt';
 
 const HackathonCard = ({ title, subtitle, description, icon: Icon }) => (
     <div className="glass-card card-hover-glow p-8 mb-6">
@@ -39,9 +40,13 @@ const HackathonDetails = () => {
                     <div className="space-y-4">
                         <span className="badge-glass badge-orange">🏆 Quest Log</span>
                         <h1 className="font-display text-4xl md:text-5xl font-bold text-text-primary">Our Hackathon Journey</h1>
-                        <p className="text-text-secondary text-lg max-w-3xl">
+                        <p className="text-text-secondary text-lg max-w-3xl mb-8">
                             Explore our innovative solutions developed through various national and international hackathons.
                         </p>
+
+                        <div className="glass-card p-6 inline-block mt-4 border-primary/20">
+                            <AsciiArt theme="drone" accent="primary" />
+                        </div>
                     </div>
                 </div>
             </section>

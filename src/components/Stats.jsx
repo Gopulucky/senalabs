@@ -20,7 +20,7 @@ const SystemMetrics = () => {
                     </div>
                     
                     <div className="hidden md:block opacity-30">
-                        <AsciiArt theme="server_rack" accent="text-text-muted" />
+                        <AsciiArt theme="dot_grid" accent="text-muted" />
                     </div>
 
                     <span className="section-counter">[ 02 / 06 ]</span>

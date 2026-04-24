@@ -2,30 +2,31 @@
 
 @theme {
   /* ═══════════════════════════════════════════════════
-     AURORA TERMINAL — Design Tokens
+     DIGITAL GALLERY — Design Tokens
+     (Using legacy Aurora/Terminal variable names)
      ═══════════════════════════════════════════════════ */
 
-  /* Dark Backgrounds */
-  --color-bg-deep: #0A0F1C;
-  --color-bg-surface: #111827;
-  --color-bg-elevated: #1E293B;
-  --color-bg-card: #0F172A;
-  --color-bg-light: #F8FAFC;
+  /* Dark Backgrounds (Onyx) */
+  --color-bg-deep: #050505;
+  --color-bg-surface: #111111;
+  --color-bg-elevated: #1A1A1A;
+  --color-bg-card: #0F0F0F;
+  --color-bg-light: #222222;
 
-  /* Aurora Gradient Accents */
-  --color-aurora-cyan: #06B6D4;
-  --color-aurora-violet: #8B5CF6;
-  --color-aurora-pink: #EC4899;
-  --color-aurora-blue: #3B82F6;
+  /* Gallery Accents (Legacy: Aurora Gradients) */
+  --color-aurora-cyan: #FFD700; /* Gold */
+  --color-aurora-violet: #FF8C00; /* Amber */
+  --color-aurora-pink: #E65100; /* Rust */
+  --color-aurora-blue: #E2E8F0; /* Silver */
 
-  /* Terminal Accents */
-  --color-terminal-cyan: #22D3EE;
-  --color-terminal-green: #10B981;
-  --color-terminal-amber: #F59E0B;
+  /* Spotlight Accents (Legacy: Terminal Accents) */
+  --color-terminal-cyan: #FFB700;
+  --color-terminal-green: #F59E0B; /* Muted Amber */
+  --color-terminal-amber: #D97706;
 
-  /* Warm Accent (preserved) */
-  --color-primary: #FF8C42;
-  --color-primary-light: #FFB07A;
+  /* Warm Accent */
+  --color-primary: #FFD700;
+  --color-primary-light: #FFE033;
 
   /* Semantic Colors */
   --color-coral: #FF6B6B;
@@ -129,6 +130,65 @@ body {
 /* ═══════════════════════════════════════════════════
    TERMINAL / MONOSPACE ELEMENTS
    ═══════════════════════════════════════════════════ */
+.ascii-art-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  scrollbar-width: none;
+}
+.ascii-art-container::-webkit-scrollbar {
+  display: none;
+}
+
+.ascii-art {
+  font-family: 'Courier New', monospace;
+  font-size: var(--ascii-font-size, 13px);
+  line-height: var(--ascii-line-height, 1.15);
+  letter-spacing: 0;
+  color: #00ff9d; /* Fallback, overridden by component */
+  opacity: var(--ascii-opacity, 0.8);
+  white-space: pre;
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+  transition: opacity 0.5s ease, text-shadow 0.5s ease;
+}
+
+.ascii-art-container:hover .ascii-art {
+  opacity: 1;
+  text-shadow: 0 0 15px currentColor, 0 0 30px currentColor;
+}
+
+/* New Art Canvas Utilities */
+.ascii-canvas-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  mix-blend-mode: screen;
+}
+
+.ascii-mask-fade {
+  -webkit-mask-image: radial-gradient(circle at center, black 10%, transparent 80%);
+  mask-image: radial-gradient(circle at center, black 10%, transparent 80%);
+}
+
+.ascii-mask-fade-right {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+}
+
+.ascii-mask-fade-bottom {
+  -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+}
+
 .terminal-label {
   font-family: var(--font-mono);
   font-size: 0.75rem;

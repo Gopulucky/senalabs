@@ -2,9 +2,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Cpu, Leaf } from 'lucide-react';
+import AsciiArt from '../components/ui/AsciiArt';
 
 const ProjectDetailCard = ({ title, description, tags, imagePlaceholder, icon: Icon }) => (
-    <div className="glass-card card-hover-glow p-8 mb-8">
+    <div className="glass-card card-hover-glow p-8 mb-8 relative z-10">
         <div className="flex items-start gap-6 mb-6">
             <div className="w-16 h-16 bg-gradient-to-br from-aurora-cyan/20 to-aurora-violet/20 text-aurora-cyan rounded-2xl flex items-center justify-center flex-shrink-0">
                 <Icon size={32} />
@@ -30,7 +31,18 @@ const ProjectsDetails = () => {
     ];
 
     return (
-        <div className="min-h-screen">
+        <div className="min-h-screen relative">
+            {/* Expressive Writings Mural Sidebar */}
+            <div className="fixed top-0 right-0 h-full w-1/3 pointer-events-none z-0 ascii-mask-fade-right opacity-40 mix-blend-screen flex items-center justify-end overflow-hidden">
+                <AsciiArt 
+                    theme="expressive_writings" 
+                    accent="aurora-violet" 
+                    rows={60} 
+                    cols={40} 
+                    style={{ '--ascii-font-size': '16px', '--ascii-line-height': '1.0' }} 
+                />
+            </div>
+
             <section className="pt-32 pb-16 px-6 relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-b from-terminal-green/5 to-transparent pointer-events-none" />
                 <div className="max-w-7xl mx-auto relative z-10">

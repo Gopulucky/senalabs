@@ -6,8 +6,19 @@ import AsciiArt from '../components/ui/AsciiArt';
 
 const ContactPage = () => {
     return (
-        <div className="min-h-screen">
-            <section className="pt-32 pb-16 px-6 relative overflow-hidden">
+        <div className="min-h-screen relative">
+            {/* Contact Radiating Signals Background */}
+            <div className="absolute top-0 right-0 w-full md:w-1/2 h-[70vh] pointer-events-none z-0 ascii-mask-fade opacity-30 mix-blend-screen overflow-hidden flex justify-end">
+                <AsciiArt 
+                    theme="contact_network" 
+                    accent="aurora-pink" 
+                    rows={40} 
+                    cols={80} 
+                    style={{ '--ascii-font-size': '18px', '--ascii-line-height': '1.1' }} 
+                />
+            </div>
+
+            <section className="pt-32 pb-16 px-6 relative overflow-hidden z-10">
                 <div className="absolute inset-0 bg-gradient-to-b from-aurora-pink/5 to-transparent pointer-events-none" />
                 <div className="max-w-7xl mx-auto relative z-10">
                     <Link to="/" className="inline-flex items-center text-text-muted hover:text-aurora-cyan mb-8 transition-colors group font-mono text-sm">
@@ -16,14 +27,10 @@ const ContactPage = () => {
                     </Link>
                     <div className="space-y-4">
                         <span className="badge-glass badge-pink">📬 Connect</span>
-                        <h1 className="font-display text-4xl md:text-5xl font-bold text-text-primary">Contact Us</h1>
-                        <p className="text-text-secondary text-lg max-w-3xl mb-8">
+                        <h1 className="font-display text-4xl md:text-5xl font-bold text-text-primary text-shadow-xl">Contact Us</h1>
+                        <p className="text-text-secondary text-lg max-w-3xl mb-8 bg-bg-deep/50 backdrop-blur-sm p-4 rounded-xl border border-border-subtle inline-block">
                             Have questions or want to collaborate? We'd love to hear from you.
                         </p>
-
-                        <div className="glass-card p-6 inline-block mt-4 border-aurora-pink/20">
-                            <AsciiArt theme="satellite" accent="aurora-pink" />
-                        </div>
                     </div>
                 </div>
             </section>

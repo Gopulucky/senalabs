@@ -29,8 +29,19 @@ const HackathonDetails = () => {
     ];
 
     return (
-        <div className="min-h-screen">
-            <section className="pt-32 pb-16 px-6 relative overflow-hidden">
+        <div className="min-h-screen relative">
+            {/* Hackathon Matrix Network Background */}
+            <div className="absolute top-0 right-0 w-full md:w-1/2 h-[70vh] pointer-events-none z-0 ascii-mask-fade-right opacity-30 mix-blend-screen overflow-hidden flex justify-end">
+                <AsciiArt 
+                    theme="hackathon_network" 
+                    accent="primary" 
+                    rows={40} 
+                    cols={80} 
+                    style={{ '--ascii-font-size': '18px', '--ascii-line-height': '1.1' }} 
+                />
+            </div>
+
+            <section className="pt-32 pb-16 px-6 relative overflow-hidden z-10">
                 <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
                 <div className="max-w-7xl mx-auto relative z-10">
                     <Link to="/" className="inline-flex items-center text-text-muted hover:text-aurora-cyan mb-8 transition-colors group font-mono text-sm">
@@ -39,14 +50,10 @@ const HackathonDetails = () => {
                     </Link>
                     <div className="space-y-4">
                         <span className="badge-glass badge-orange">🏆 Quest Log</span>
-                        <h1 className="font-display text-4xl md:text-5xl font-bold text-text-primary">Our Hackathon Journey</h1>
-                        <p className="text-text-secondary text-lg max-w-3xl mb-8">
+                        <h1 className="font-display text-4xl md:text-5xl font-bold text-text-primary text-shadow-xl">Our Hackathon Journey</h1>
+                        <p className="text-text-secondary text-lg max-w-3xl mb-8 bg-bg-deep/50 backdrop-blur-sm p-4 rounded-xl border border-border-subtle inline-block">
                             Explore our innovative solutions developed through various national and international hackathons.
                         </p>
-
-                        <div className="glass-card p-6 inline-block mt-4 border-primary/20">
-                            <AsciiArt theme="drone" accent="primary" />
-                        </div>
                     </div>
                 </div>
             </section>

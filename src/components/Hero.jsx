@@ -1,6 +1,7 @@
 // Hero – Mission Control Split Screen
 import React from 'react';
 import { Link } from 'react-router-dom';
+import AsciiArt from './ui/AsciiArt';
 
 const Radar = () => (
     <div className="relative w-80 h-80 flex items-center justify-center">
@@ -29,8 +30,16 @@ const Radar = () => (
 const Hero = () => {
     return (
         <section className="relative min-h-[92vh] flex flex-col justify-center items-center px-6 overflow-hidden bg-bg-deep">
-            {/* Minimal Grid Background */}
-            <div className="absolute inset-0 grid-pattern opacity-30" />
+            {/* Expressive Digital Canvas */}
+            <div className="ascii-canvas-overlay ascii-mask-fade opacity-30">
+                <AsciiArt 
+                    theme="canvas_waves" 
+                    accent="aurora-cyan" 
+                    rows={40} 
+                    cols={120} 
+                    style={{ '--ascii-font-size': '18px' }} 
+                />
+            </div>
 
             {/* Split Screen Layout Container */}
             <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-8 border-t border-b border-border-subtle py-20 lg:py-0 lg:min-h-[70vh]">

@@ -121,9 +121,29 @@ const ProgramsDetails = () => {
     ];
 
     return (
-        <div className="min-h-screen">
+        <div className="min-h-screen relative">
+            {/* Expressive Art Pillars */}
+            <div className="absolute top-0 left-0 w-1/4 h-full pointer-events-none z-0 ascii-mask-fade-right opacity-20 mix-blend-screen overflow-hidden hidden md:block">
+                <AsciiArt 
+                    theme="canvas_waves" 
+                    accent="aurora-cyan" 
+                    rows={120} 
+                    cols={30} 
+                    style={{ '--ascii-font-size': '14px', '--ascii-line-height': '0.9' }} 
+                />
+            </div>
+            <div className="absolute top-0 right-0 w-1/4 h-full pointer-events-none z-0 ascii-mask-fade opacity-20 mix-blend-screen overflow-hidden hidden md:block" style={{ transform: 'scaleX(-1)' }}>
+                <AsciiArt 
+                    theme="canvas_waves" 
+                    accent="aurora-violet" 
+                    rows={120} 
+                    cols={30} 
+                    style={{ '--ascii-font-size': '14px', '--ascii-line-height': '0.9' }} 
+                />
+            </div>
+
             {/* Hero Section */}
-            <section className="pt-32 pb-16 px-6 relative overflow-hidden">
+            <section className="pt-32 pb-16 px-6 relative overflow-hidden z-10">
                 <div className="absolute inset-0 bg-gradient-to-b from-aurora-cyan/5 to-transparent pointer-events-none" />
                 <div className="max-w-7xl mx-auto relative z-10">
                     <Link to="/" className="inline-flex items-center text-text-muted hover:text-aurora-cyan mb-8 transition-colors group font-mono text-sm">
@@ -132,15 +152,11 @@ const ProgramsDetails = () => {
                     </Link>
                     <div className="space-y-4">
                         <span className="badge-glass badge-green">🎓 Skill Tree</span>
-                        <h1 className="font-display text-4xl md:text-5xl font-bold text-text-primary">Our Workshops & Training Programs</h1>
-                        <p className="text-text-secondary text-lg max-w-3xl mb-8">
+                        <h1 className="font-display text-4xl md:text-5xl font-bold text-text-primary text-shadow-xl">Our Workshops & Training Programs</h1>
+                        <p className="text-text-secondary text-lg max-w-3xl mb-8 bg-bg-deep/50 backdrop-blur-sm p-4 rounded-xl border border-border-subtle inline-block">
                             Explore our hands-on training programs and workshops held at prestigious institutions like IIT Bombay's Techfest,
                             where we gained practical skills in robotics, AI, and emerging technologies.
                         </p>
-
-                        <div className="glass-card p-6 inline-block mt-4 border-terminal-green/20">
-                            <AsciiArt theme="mech_core" accent="terminal-green" />
-                        </div>
                     </div>
                 </div>
             </section>

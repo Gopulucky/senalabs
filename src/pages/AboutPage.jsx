@@ -6,9 +6,20 @@ import AsciiArt from '../components/ui/AsciiArt';
 
 const AboutPage = () => {
     return (
-        <div className="min-h-screen">
+        <div className="min-h-screen relative">
+            {/* Expressive Abstract Mural Background */}
+            <div className="absolute top-0 left-0 w-full h-[80vh] pointer-events-none z-0 ascii-mask-fade-bottom opacity-20 mix-blend-overlay overflow-hidden">
+                <AsciiArt 
+                    theme="abstract_mural" 
+                    accent="aurora-pink" 
+                    rows={40} 
+                    cols={120} 
+                    style={{ '--ascii-font-size': '24px', '--ascii-line-height': '0.8', transform: 'scale(1.5)' }} 
+                />
+            </div>
+
             {/* Hero Section */}
-            <section className="pt-32 pb-16 px-6 relative overflow-hidden">
+            <section className="pt-32 pb-16 px-6 relative overflow-hidden z-10">
                 <div className="absolute inset-0 bg-gradient-to-b from-aurora-violet/5 to-transparent pointer-events-none" />
                 <div className="max-w-7xl mx-auto relative z-10">
                     <Link to="/" className="inline-flex items-center text-text-muted hover:text-aurora-cyan mb-8 transition-colors group font-mono text-sm">
@@ -17,14 +28,10 @@ const AboutPage = () => {
                     </Link>
                     <div className="space-y-4">
                         <span className="badge-glass badge-orange">🎯 About</span>
-                        <h1 className="font-display text-4xl md:text-5xl font-bold text-text-primary">About Us</h1>
-                        <p className="text-text-secondary text-lg max-w-3xl mb-8">
+                        <h1 className="font-display text-4xl md:text-5xl font-bold text-text-primary text-shadow-xl">About Us</h1>
+                        <p className="text-text-secondary text-lg max-w-3xl mb-8 bg-bg-deep/50 backdrop-blur-sm p-4 rounded-xl border border-border-subtle inline-block">
                             Learn about our mission, vision, and what drives SenA Labs forward.
                         </p>
-                        
-                        <div className="glass-card p-6 inline-block mt-8">
-                            <AsciiArt theme="ai_brain" accent="aurora-violet" />
-                        </div>
                     </div>
                 </div>
             </section>

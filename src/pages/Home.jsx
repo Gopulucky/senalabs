@@ -1,19 +1,19 @@
 import React from 'react';
 import Hero from '../components/Hero';
-import Services from '../components/Services';
-import Highlights from '../components/Highlights';
-import Stats from '../components/Stats';
+import Protocols from '../components/Services';
+import LiveOperations from '../components/Highlights';
+import SystemMetrics from '../components/Stats';
 
 const Home = () => {
     return (
         <main className="flex-grow">
             <Hero />
             <div className="section-divider" />
-            <Stats />
+            <SystemMetrics />
             <div className="section-divider" />
-            <Services />
+            <Protocols />
             <div className="section-divider" />
-            <Highlights />
+            <LiveOperations />
         </main>
     );
 };

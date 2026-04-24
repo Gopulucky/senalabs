@@ -1,61 +1,51 @@
-// Stats – Terminal Monospace Grid with ASCII Box Borders
+// System Metrics – Brutalist Grid Layout
 import React from 'react';
 
-const Stats = () => {
-    const stats = [
-        { icon: '🏆', value: '20+', label: 'Projects', color: 'text-primary' },
-        { icon: '⚡', value: '30+', label: 'Hackathons', color: 'text-aurora-cyan' },
-        { icon: '🎓', value: '100+', label: 'Students Mentored', color: 'text-lavender' },
+const SystemMetrics = () => {
+    const metrics = [
+        { label: 'TOTAL_PROTOTYPES', value: '47', color: 'text-text-primary' },
+        { label: 'HACKATHONS_WON', value: '12', color: 'text-aurora-cyan' },
+        { label: 'MEMBERS_TRAINED', value: '150+', color: 'text-terminal-amber' },
     ];
 
     return (
-        <section className="py-16 px-6 relative">
-            <div className="max-w-4xl mx-auto">
+        <section className="py-20 px-6">
+            <div className="max-w-7xl mx-auto">
                 {/* Terminal Section Header */}
-                <div className="section-header-terminal mb-8">
-                    <span className="terminal-label">METRICS</span>
+                <div className="section-header-terminal font-mono mb-0 border-b-0">
+                    <div className="flex flex-col">
+                        <span className="terminal-label text-text-muted text-[10px]"># SYS.PERFORMANCE</span>
+                        <span className="text-aurora-cyan text-sm font-bold">METRICS</span>
+                    </div>
                     <span className="section-counter">[ 02 / 06 ]</span>
                 </div>
 
-                {/* ASCII Box Stats */}
-                <div className="glass-card p-0 overflow-hidden">
-                    {/* Top border decoration */}
-                    <div className="px-6 py-2 border-b border-border-subtle">
-                        <span className="font-mono text-[11px] text-text-dim">
-                            ┌─── performance_metrics.log ───┐
-                        </span>
-                    </div>
+                {/* Brutalist Grid */}
+                <div className="border border-border-strong grid grid-cols-1 md:grid-cols-3 bg-bg-deep">
+                    {metrics.map((metric, i) => (
+                        <div
+                            key={i}
+                            className={`p-10 flex flex-col justify-center items-center relative group transition-colors duration-300 hover:bg-bg-surface ${i < metrics.length - 1 ? 'border-b md:border-b-0 md:border-r border-border-strong' : ''
+                                }`}
+                        >
+                            {/* Inner Corner Accents */}
+                            <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-text-muted opacity-50" />
+                            <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-text-muted opacity-50" />
+                            <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-text-muted opacity-50" />
+                            <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-text-muted opacity-50" />
 
-                    <div className="grid grid-cols-1 md:grid-cols-3">
-                        {stats.map((stat, i) => (
-                            <div
-                                key={i}
-                                className={`flex flex-col items-center py-10 px-4 group transition-all duration-300 hover:bg-white/[0.02] ${i < stats.length - 1 ? 'md:border-r border-b md:border-b-0 border-border-subtle' : ''
-                                    }`}
-                            >
-                                <div className={`text-2xl mb-3 group-hover:scale-110 transition-transform duration-200`}>
-                                    {stat.icon}
-                                </div>
-                                <div className={`font-mono text-3xl md:text-4xl font-bold ${stat.color} mb-2`}>
-                                    {stat.value}
-                                </div>
-                                <div className="font-mono text-text-muted text-xs uppercase tracking-widest text-center">
-                                    {stat.label}
-                                </div>
+                            <div className={`font-mono text-7xl md:text-8xl font-black ${metric.color} tracking-tighter mb-4 group-hover:scale-105 transition-transform duration-300 drop-shadow-md`}>
+                                {metric.value}
                             </div>
-                        ))}
-                    </div>
-
-                    {/* Bottom border decoration */}
-                    <div className="px-6 py-2 border-t border-border-subtle">
-                        <span className="font-mono text-[11px] text-text-dim">
-                            └─── last_updated: 2026 ────────┘
-                        </span>
-                    </div>
+                            <div className="font-mono text-text-secondary text-xs tracking-[0.2em] bg-bg-surface/50 px-3 py-1 border border-border-subtle rounded-sm">
+                                &gt; {metric.label}
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>
     );
 };
 
-export default Stats;
+export default SystemMetrics;

@@ -1,64 +1,70 @@
-// Highlights – Glass Achievement Cards with Terminal Headers
+// Live Operations – Hackathons & Deployments
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
 
-const HighlightCard = ({ emoji, title, description, link, linkText, badgeText, accentBorder }) => (
-    <div className={`glass-card card-hover-glow p-6 h-full flex flex-col group`}
-        style={{ borderTop: `2px solid ${accentBorder}` }}>
-        <div className="flex items-start justify-between mb-4">
-            <span className="text-2xl">{emoji}</span>
-            {badgeText && <span className="badge-glass badge-orange text-[10px]">{badgeText}</span>}
+const OperationCard = ({ status, title, description, date, type, accentColor }) => (
+    <div className={`glass-card p-6 h-full flex flex-col group relative overflow-hidden`}
+        style={{ borderLeft: `2px solid ${accentColor}` }}>
+        
+        {/* Animated Scanline overlay */}
+        <div className="absolute top-0 left-0 w-full h-[1px] bg-white/20 opacity-0 group-hover:opacity-100 group-hover:animate-fadeInUp" />
+
+        <div className="flex items-center justify-between mb-4 font-mono text-xs">
+            <div className="flex items-center gap-2">
+                <span className={`w-2 h-2 rounded-full ${status === 'LIVE' ? 'bg-coral animate-ping' : 'bg-text-dim'}`} />
+                <span className={`${status === 'LIVE' ? 'text-coral' : 'text-text-muted'}`}>[{status}]</span>
+            </div>
+            <span className="text-text-dim">{date}</span>
         </div>
-        <h3 className="font-display text-base font-bold text-text-primary mb-2">{title}</h3>
-        <p className="text-text-secondary text-sm leading-relaxed mb-4 flex-grow">{description}</p>
-        <Link
-            to={link}
-            className="inline-flex items-center text-aurora-cyan font-semibold text-sm hover:text-terminal-cyan group/link mt-auto font-mono"
-        >
-            {linkText}
-            <ArrowRight size={14} className="ml-1 group-hover/link:translate-x-1 transition-transform" />
-        </Link>
+
+        <h3 className="font-display text-lg font-bold text-text-primary mb-2 group-hover:text-aurora-cyan transition-colors">{title}</h3>
+        <p className="text-text-secondary text-sm leading-relaxed mb-6 font-sans flex-grow">{description}</p>
+        
+        <div className="mt-auto pt-4 border-t border-border-subtle flex justify-between items-center">
+            <span className="font-mono text-[10px] text-text-muted uppercase tracking-wider">{type}</span>
+            <Link
+                to="/hackathons"
+                className="font-mono text-xs text-aurora-cyan hover:text-terminal-cyan transition-colors"
+            >
+                &gt; view_logs
+            </Link>
+        </div>
     </div>
 );
 
-const Highlights = () => {
-    const highlights = [
+const LiveOperations = () => {
+    const operations = [
         {
-            emoji: '🏆',
-            title: '5+ National Hackathons',
-            description: 'From Smart India Hackathon to IIT Thirupati challenges, we\'ve built real solutions for MSME, Agriculture, and Data Analytics.',
-            link: '/hackathons',
-            linkText: 'View Journey',
-            badgeText: '⭐ Top',
-            accentBorder: 'rgba(255, 140, 66, 0.5)',
+            status: 'LIVE',
+            title: 'Smart India Hackathon',
+            description: 'Building an AI-driven predictive maintenance system for MSME manufacturing lines.',
+            date: 'CURRENT',
+            type: 'DEPLOYMENT_NATIONAL',
+            accentColor: '#FF6B6B',
         },
         {
-            emoji: '💡',
-            title: 'IIT Bombay Techfest',
-            description: 'Hands-on workshops in Robotics and LLM implementation, gaining practical skills in AI, ML, and hardware integration.',
-            link: '/programs',
-            linkText: 'Explore',
-            badgeText: '🎓 Certified',
-            accentBorder: 'rgba(6, 182, 212, 0.5)',
+            status: 'COMPLETED',
+            title: 'IIT Thirupati Hack',
+            description: 'Developed an automated IoT crop monitoring solution winning 1st place in the AgTech category.',
+            date: 'OCT_2025',
+            type: 'DEPLOYMENT_NATIONAL',
+            accentColor: '#10B981',
         },
         {
-            emoji: '🚀',
-            title: 'R&D Projects',
-            description: 'Building innovative solutions like Smart Bots and Eco Sensors using Python, IoT, and cutting-edge technologies.',
-            link: '/projects',
-            linkText: 'See Projects',
-            badgeText: '🔬 Active',
-            accentBorder: 'rgba(236, 72, 153, 0.5)',
+            status: 'COMPLETED',
+            title: 'Eco Sensor Grid',
+            description: 'Internal R&D project mapping air quality across campus using custom ESP32 nodes.',
+            date: 'AUG_2025',
+            type: 'INTERNAL_RND',
+            accentColor: '#8B5CF6',
         },
         {
-            emoji: '👥',
-            title: 'Diverse Team',
-            description: 'Industry professionals and brilliant students from IIT, VNR, GRIET, and more collaborating on impactful solutions.',
-            link: '/team',
-            linkText: 'Meet Team',
-            badgeText: '🤝 Growing',
-            accentBorder: 'rgba(139, 92, 246, 0.5)',
+            status: 'COMPLETED',
+            title: 'Algorithm Sprint',
+            description: 'Intense 24-hour internal competitive programming workshop to prep for ICPC.',
+            date: 'JUL_2025',
+            type: 'TRAINING_EXERCISE',
+            accentColor: '#06B6D4',
         },
     ];
 
@@ -66,20 +72,17 @@ const Highlights = () => {
         <section className="py-20 px-6">
             <div className="max-w-6xl mx-auto">
                 {/* Terminal Section Header */}
-                <div className="section-header-terminal">
-                    <span className="terminal-label">ACHIEVEMENTS</span>
+                <div className="section-header-terminal font-mono">
+                    <div className="flex flex-col">
+                        <span className="terminal-label text-text-muted text-[10px]"># SYS.LOG.EVENTS</span>
+                        <span className="text-aurora-cyan text-sm font-bold">LIVE OPERATIONS</span>
+                    </div>
                     <span className="section-counter">[ 04 / 06 ]</span>
                 </div>
 
-                <div className="section-title-block">
-                    <span className="badge-glass badge-amber mb-4 inline-block">🎮 Achievements Unlocked</span>
-                    <h2>What We've Achieved</h2>
-                    <p>A glimpse into our journey of innovation, learning, and building impactful solutions.</p>
-                </div>
-
-                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                    {highlights.map((h, i) => (
-                        <HighlightCard key={i} {...h} />
+                <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                    {operations.map((op, i) => (
+                        <OperationCard key={i} {...op} />
                     ))}
                 </div>
             </div>
@@ -87,4 +90,4 @@ const Highlights = () => {
     );
 };
 
-export default Highlights;
+export default LiveOperations;
